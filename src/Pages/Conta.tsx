@@ -11,11 +11,8 @@ export const Conta = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const interval = () => {
-    setSegundos(segundos - 1);
-  };
-  setInterval(interval, 1000);
-
+ 
+  
   const goToMenu = () => {
     navigate("/");
   };
@@ -28,42 +25,39 @@ export const Conta = () => {
 
     getData();
   });
-
-  useEffect(() => {
-    const interval = () => {
-        setSegundos(segundos - 1);
-      };
-      setInterval(interval, 1000);
-
-      interval();
-
-      if (segundos === 0) goToMenu();
-  },)
+     
+ const interval = () => {
+    segundos !== 0 ? setSegundos(segundos - 1) : setSegundos(0)
+}
+  setInterval(interval, 1000);
 
   
+ 
+
+  if (userData && segundos === 0) goToMenu();
 
   
 
   return (
     <Center>
-      {id !== userData.id ? (
-        <Text fontSize="larger" color="gray.700" fontWeight="bold">
-          Usuário indisponivel você será redirecionado em {segundos}...
-        </Text>
-      ) : (
         <SimpleGrid columns={2} spacing={8} paddingTop={16}>
           {userData.name === undefined || userData.nome === null ? (
             <Center>
               <Spinner size="xl" color="gray.700" />
             </Center>
           ) : (
+            userData && id !== userData.id   ? 
+              <Text fontSize="larger" color="gray.700" fontWeight="bold">
+                Usuário indisponivel você será redirecionado em {segundos}...
+              </Text>
+            :
             <>
               <CardInfo type={0} data={userData} />
               <CardInfo type={1} data={userData} />
             </>
           )}
         </SimpleGrid>
-      )}
+    
     </Center>
   );
 };

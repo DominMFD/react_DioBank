@@ -3,5 +3,5 @@ export interface IUserData {
     password: string
     name: string
     balance: number
-    id: number
+    id: string
   }
