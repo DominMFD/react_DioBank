@@ -15,6 +15,15 @@ export const CardInfo = ({type, data}: ICardInfo) => {
 
     const actualData = new Date()
 
+    const setBalanceColor = () => {
+        if (data.balance > 0 )
+        return 'whatsapp.400'
+        if (data.balance < 0)
+        return 'red.400'
+
+        return 'white'
+    }
+
     return (
         <Box
         backgroundColor='gray.700'
@@ -25,7 +34,7 @@ export const CardInfo = ({type, data}: ICardInfo) => {
         >
          {type === 0 ? 
          <>
-            <Text>
+            <Text fontWeight={'bold'} fontSize={'x-large'}>
                 Olá, {data.name}
             </Text>
             <Text>
@@ -34,11 +43,11 @@ export const CardInfo = ({type, data}: ICardInfo) => {
          </>
           : 
          <>
-            <Text>
+            <Text fontWeight={'bold'} fontSize={'x-large'}>
                Saldo
             </Text>
-            <Text>
-                R${data.balance?.toFixed(2)}
+            <Text color={setBalanceColor()} fontWeight={'semibold'}>
+                R$ {data.balance?.toFixed(2)}
             </Text>
          </>
          }
