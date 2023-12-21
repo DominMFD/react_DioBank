@@ -1,7 +1,7 @@
-import { Button, Center, ChakraProvider, Flex, Text } from '@chakra-ui/react'
+import { Button, Center, ChakraProvider, Flex } from '@chakra-ui/react'
 import { AppContext } from './AppContext'
 import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { changeLocalStorage } from '../services/storage'
 
 export const Header  = () => {
@@ -20,7 +20,7 @@ export const Header  = () => {
     <ChakraProvider>
       <Flex p={2} bg="gray.700" alignItems={'center'}> 
         <Center color='pink.500' fontWeight='bold' fontSize='xx-large' flex={1}>
-          <Text>Dio Bank</Text>
+          <Link to={'/'} title='Página Inicial'>Dio Bank</Link>
       </Center>
       {
         isLoggedIn && (
