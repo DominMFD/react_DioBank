@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { login } from "../services/login";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "./AppContext";
+import { changeLocalStorage } from "../services/storage";
 
 interface IUserCard {
     title: string
@@ -12,17 +13,19 @@ interface IUserCard {
 export const Card = ({title}: IUserCard) => {
 
     const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('')
     const { setIsLoggedIn } = useContext(AppContext)
     const navigate = useNavigate()
 
-    const validateUser = async (email: string) => {
-      const loggedIn = await login(email)
+    const validateUser = async (email: string, password: string) => {
+      const loggedIn = await login(email, password)
 
       if (!loggedIn ) {
-        return alert( 'Email invalido')
+        return alert( 'Email ou senha inválido')
       }
       
       setIsLoggedIn(true)
+      changeLocalStorage({login: true})
       navigate('/conta/1')
 
     }
@@ -37,9 +40,12 @@ export const Card = ({title}: IUserCard) => {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <Input placeholder="password" />
+        <Input 
+        placeholder="password" 
+        value={password}
+        onChange={(event) => setPassword(event.target.value)} />
         <Center>
-          <Botao title="Login" event={() => validateUser(email)} />
+          <Botao title="Login" event={() => validateUser(email, password)} />
         </Center>
       </Box>
     );
