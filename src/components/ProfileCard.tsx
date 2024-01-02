@@ -11,7 +11,7 @@ export const ProfileCard = ({data}: IProfileCard) => {
     const navigate = useNavigate()
 
     const handleConta = () => {
-        navigate(`/conta/${data.id}`)
+        navigate(`/conta/${data.userId}`)
     }
 
     return (

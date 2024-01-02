@@ -1,13 +1,27 @@
-const conta = {
-    email: "mfdmatheus@hotmail.com",
-    password: 'matheus14',
-    name: 'Matheus Domingos',
-    balance: 2000,
-    id: '1',
-}
+import axios from "axios"
+import { IUserData } from "./Interfaces/IUserData"
 
-export const api = new Promise((resolve) => {
-    setTimeout(() => {
-        resolve(conta)
-    }, 3000)
-})
+const token = '123456789';
+
+
+
+export const api = async (email: string): Promise<IUserData | void> => {
+
+    await axios.get(`http://localhost:5000/user/${email}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(response => {
+        if (response && response.data) {
+            console.log('Dados recebidos:', response.data);
+            return response.data;
+
+          } else {
+            console.error('Resposta da API sem dados.');
+          }
+        })
+      .catch(error => {
+        console.error('Erro:', error);
+      });
+}

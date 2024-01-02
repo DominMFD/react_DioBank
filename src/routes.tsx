@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import { Conta } from "./Pages/Conta";
 import { Home } from "./Pages/Home";
 import { Perfil } from "./Pages/Perfil";
-import { getAllLocalStorage } from "./services/storage";
 
 const MainRoutes = () => {
   const { isLoggedIn } = useContext(AppContext);

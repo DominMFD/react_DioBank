@@ -21,7 +21,7 @@ export const Conta = () => {
     getData();
   });
 
-  if(userData && userData.id !== id) {
+  if(userData && userData.userId !== id) {  
     navigate('/')
   }
 

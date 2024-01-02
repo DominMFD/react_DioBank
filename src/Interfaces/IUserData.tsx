@@ -1,7 +1,8 @@
 export interface IUserData {
+    userId: string
+    name: string
     email: string
     password: string
-    name: string
     balance: number
-    id: string
+
   }
