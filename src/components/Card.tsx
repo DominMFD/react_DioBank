@@ -27,7 +27,6 @@ export const Card = ({title}: IUserCard) => {
       setIsLoggedIn(true)
       changeLocalStorage({login: true})
       navigate('/conta/1')
-
     }
 
     return (
