@@ -12,6 +12,10 @@ export const ProfileCard = ({data}: IProfileCard) => {
 
     const handleConta = () => {
         navigate(`/conta/${data.userId}`)
+
+        if(data === undefined) {
+          navigate('/')
+        }
     }
 
     return (

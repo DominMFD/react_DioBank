@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { api } from "../api";
+import { instance } from "../api";
 import { Center, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { CardInfo } from "../components/CardInfo";
 import { IUserData } from "../Interfaces/IUserData";
@@ -14,7 +14,10 @@ export const Conta = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await api;
+      const data = await instance.get(`/user/oie@hotmail.com.br`)
+      .then(response => {
+        return response.data
+      });
       setUserData(data);
     };
 

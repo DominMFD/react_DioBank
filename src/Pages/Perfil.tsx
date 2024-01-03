@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IUserData } from "../Interfaces/IUserData";
-import { api } from "../api";
 import { ProfileCard } from "../components/ProfileCard";
 import { Center } from "@chakra-ui/react";
+import { AppContext } from "../components/AppContext";
 
 export const  Perfil = () => {
     const [userData, setUserData] = useState<any | IUserData>("");
+    const { user } = useContext(AppContext)
 
     useEffect(() => {
         const getData = async () => {
-          const data = await api;
+          const data = user
           setUserData(data);
         };
     
