@@ -14,6 +14,14 @@ export const ProfileCard = ({data}: IProfileCard) => {
         navigate(`/conta/${data.userId}`)
 
         if(data === undefined) {
+            data = {
+                userId: '',
+                name: '',
+                email: '',
+                password: '',
+                balance: 0  
+
+            }
           navigate('/')
         }
     }

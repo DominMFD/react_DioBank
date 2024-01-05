@@ -1,4 +1,4 @@
-import { AlertTitle, Box, Center, Flex, Input } from "@chakra-ui/react"
+import { Box, Center, Flex, Input } from "@chakra-ui/react"
 import { Botao } from "./Button"
 import { useContext, useState } from "react";
 import { login } from "../services/login";
@@ -33,8 +33,12 @@ export const Card = ({title}: IUserCard) => {
       setEmailTitle(email)
     }
 
+    const handleCreateAccount = () => {
+      navigate("/criarConta")
+    }
+
     return (
-        <Box backgroundColor="#FFFFFF" 
+        <Box backgroundColor="#FFF" 
         borderRadius="25px" 
         padding="15px" 
         maxW='max-content'>
@@ -57,7 +61,7 @@ export const Card = ({title}: IUserCard) => {
         onChange={(event) => setPassword(event.target.value)} />
         <Flex gap='2'>
           <Botao title="Login" event={() => validateUser(email, password)} />
-          <Botao title="Criar Conta" event={() => validateUser(email, password)} />
+          <Botao title="Criar Conta" event={() => handleCreateAccount()} />
         </Flex>
       </Box>        
     );
