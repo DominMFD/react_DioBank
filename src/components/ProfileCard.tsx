@@ -1,4 +1,4 @@
-import { Box, Center, Table, Td, Text, Tr } from "@chakra-ui/react"
+import { Box, Center, Flex, Table, Td, Text, Tr } from "@chakra-ui/react"
 import { Botao } from "./Button"
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
@@ -12,6 +12,10 @@ export const ProfileCard = () => {
 
     const handleConta = () => {
         navigate(`/conta/${user.userId}`)
+    }
+
+    const handleChangeEmail = () => {
+        navigate('/alterarEmail')
     }
 
 
@@ -33,7 +37,7 @@ export const ProfileCard = () => {
                 Informações do usuário
                 </Text>
             </Center>
-            <Table marginBottom={16}>
+            <Table marginBottom={3}>
                 <Tr>
                     <Td 
                     fontSize={'large'} 
@@ -61,6 +65,16 @@ export const ProfileCard = () => {
                     </Td>
                 </Tr>
             </Table>
+            <Flex 
+            gap={2}
+            marginBottom={6}>
+                <Botao
+                title="Alterar Email"
+                event={handleChangeEmail}/>
+                <Botao 
+                title="Alterar Senha"
+                event={() =>{}}/>
+            </Flex>
             <Center>
                 <Botao 
                 title="Conta"

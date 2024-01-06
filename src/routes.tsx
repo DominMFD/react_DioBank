@@ -5,6 +5,7 @@ import { Conta } from "./Pages/Conta";
 import { Home } from "./Pages/Home";
 import { Perfil } from "./Pages/Perfil";
 import { CriarConta } from "./Pages/CriarConta";
+import { AlterarEmail } from "./Pages/AlterarEmail";
 
 const MainRoutes = () => {
   const { isLoggedIn } = useContext(AppContext);
@@ -15,6 +16,7 @@ const MainRoutes = () => {
       <Route path="/conta/:id" element={<Conta />} />
       <Route path="/infoConta" element={isLoggedIn ? <Perfil /> : <Home />} />
       <Route path="/criarConta" element={!isLoggedIn ? <CriarConta /> : < Perfil />} />
+      <Route path="/alterarEmail" element={isLoggedIn ? <AlterarEmail /> : <Home /> } />
     </Routes>
   );
 };
