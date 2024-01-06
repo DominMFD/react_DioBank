@@ -1,7 +1,8 @@
-import { Box, Center, FormControl, FormHelperText, FormLabel, Input } from "@chakra-ui/react"
+import { Box, Center, FormControl, FormHelperText, FormLabel, Input, Text } from "@chakra-ui/react"
 import { Botao } from "./Button"
 import { useState } from "react";
-import { IUserData } from "../Interfaces/IUserData";
+import { instance } from "../services/api";
+import { SuccessfulCreateAccountCard } from "./SuccessfulCreateAccountCard";
 
 export const CreateAccountCard = () => {
 
@@ -14,30 +15,58 @@ export const CreateAccountCard = () => {
     const [emailIsValid,setEmailIsValid] = useState<boolean>()
     const [passwordError,setPasswordError] = useState<boolean>()
 
-    const clearInputs = () => {
-            setNameError(false)
-            setEmailError(false)
-            setPasswordError(false)
-            setEmailIsValid(false)
-            setName('')
-            setEmail('')
-            setPassword('')
-    }
+    const [createSuccessful, setCreateSuccessfull] = useState<boolean>()
+    const [userExists, setUserExists] = useState<boolean>()
 
+    const verifyUser = async (): Promise<boolean> => {
+        const data = await instance.get(`/user/${email}`)
+            .then(response => {
+                return response.data
+            })
 
-    const handleSubmit = () => {
+            if(data.email === email){
+                setUserExists(true)
+                console.log('oi')
+                return true
+            }
+           
+
+            return false
+    } 
+
+    const handleSubmit = async () => {
 
         if(name === '' || email === '' || password === '' || !email.includes('@')) {
             name === '' ? setNameError(true) : setNameError(false)
             email === '' ? setEmailError(true) : setEmailError(false)
             password === '' ? setPasswordError(true) : setPasswordError(false)
             !email.includes('@') ? setEmailIsValid(true) : setEmailIsValid(false)   
-        } else {    
-            clearInputs()
-            console.log(name);
-            console.log(email);
-            console.log(password);       
+        } else {
+                if(await !verifyUser()) {
+                instance.post('/user', {
+                name: name,
+                email: email,
+                password: password
+                })
+                .then((response: any) => {
+                console.log(response)
+                console.log('Conta criada com sucesso')
+                setCreateSuccessfull(true)
+                
+                })
+                .catch((error) => {
+                console.log(error)
+                console.log("Post falhou")
+                })
+            }
+                
         }
+    }
+
+    if(createSuccessful) {
+        return (
+            <SuccessfulCreateAccountCard name={name}/>
+        )
     }
 
 
@@ -53,6 +82,18 @@ export const CreateAccountCard = () => {
             fontWeight='700'>
                 <h1>Criar Conta</h1>
             </Center>
+            {userExists ? (
+                <Center>
+                    <Text 
+                    color='red.400'
+                    fontSize='medium'>
+                        Email já cadastrado!
+                    </Text>
+                </Center>
+            ): (
+                <>
+                </>
+            )}
             <FormControl isRequired>
                 <FormLabel>Nome</FormLabel>
                 <Input 

@@ -20,7 +20,7 @@ export const Header  = () => {
     <ChakraProvider>
       <Flex p={2} bg="gray.700" alignItems={'center'}> 
         <Center color='pink.500' fontWeight='bold' fontSize='xx-large' flex={1}>
-          <Link to={'/'} title='Página Inicial'>Dio Bank</Link>
+          <Link to={'/'} title='Página Inicial'>Domin Bank</Link>
       </Center>
       {
         isLoggedIn && (

@@ -1,30 +1,20 @@
 import { Box, Center, Table, Td, Text, Tr } from "@chakra-ui/react"
-import { IUserData } from "../Interfaces/IUserData"
 import { Botao } from "./Button"
 import { useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { AppContext } from "./AppContext"
 
-interface IProfileCard {
-    data: IUserData
-}
 
-export const ProfileCard = ({data}: IProfileCard) => {
+
+export const ProfileCard = () => {
     const navigate = useNavigate()
+    const { user } = useContext(AppContext)
 
     const handleConta = () => {
-        navigate(`/conta/${data.userId}`)
-
-        if(data === undefined) {
-            data = {
-                userId: '',
-                name: '',
-                email: '',
-                password: '',
-                balance: 0  
-
-            }
-          navigate('/')
-        }
+        navigate(`/conta/${user.userId}`)
     }
+
+
 
     return (
         <Box
@@ -54,7 +44,7 @@ export const ProfileCard = ({data}: IProfileCard) => {
                     <Td 
                     fontSize={'large'}
                     >
-                    {data.name}
+                    {user.name}
                     </Td>
                 </Tr>
                 <Tr>
@@ -67,13 +57,13 @@ export const ProfileCard = ({data}: IProfileCard) => {
                     <Td 
                     fontSize={'large'}
                     >
-                    {data.email}
+                    {user.email}
                     </Td>
                 </Tr>
             </Table>
             <Center>
                 <Botao 
-                title="Conta" 
+                title="Conta"
                 event={handleConta}/>
             </Center>
         </Box>

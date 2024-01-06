@@ -1,6 +1,6 @@
 
 import { IUserData } from "../Interfaces/IUserData"
-import { instance } from "../api"
+import { instance } from "./api"
 
 
 export const login = async (email: string, password: string) : Promise<boolean> => {
@@ -12,6 +12,7 @@ export const login = async (email: string, password: string) : Promise<boolean> 
     if(email !== data?.email || password !== data?.password) {
         return false
     }
+
 
     return true
     
