@@ -1,13 +1,17 @@
 
+import { IUserData } from "../Interfaces/IUserData";
 import { ProfileCard } from "../components/ProfileCard";
 import { Center } from "@chakra-ui/react";
 
+interface IPerfil {
+  data: IUserData
+}
 
-export const  Perfil = () => {
+export const  Perfil = ({data}: IPerfil) => {
 
       return (
         <Center>
-            <ProfileCard />
+            <ProfileCard data={data} />
         </Center>
         
       )

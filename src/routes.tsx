@@ -9,14 +9,14 @@ import { AlterarEmail } from "./Pages/AlterarEmail";
 import { AlterarSenha } from "./Pages/AlterarSenha";
 
 const MainRoutes = () => {
-  const { isLoggedIn } = useContext(AppContext);
+  const { isLoggedIn, user } = useContext(AppContext);
 
   return (
     <Routes>
-      <Route path="/" element={ !isLoggedIn ? <Home /> : <Perfil />} />
+      <Route path="/" element={ !isLoggedIn ? <Home /> : <Perfil data={user} />} />
       <Route path="/conta/:id" element={<Conta />} />
-      <Route path="/infoConta" element={isLoggedIn ? <Perfil /> : <Home />} />
-      <Route path="/criarConta" element={!isLoggedIn ? <CriarConta /> : < Perfil />} />
+      <Route path="/infoConta" element={isLoggedIn ? <Perfil data={user} /> : <Home />} />
+      <Route path="/criarConta" element={!isLoggedIn ? <CriarConta /> : < Perfil data={user} />} />
       <Route path="/alterarEmail" element={<AlterarEmail /> }/>
       <Route path="/alterarSenha" element={<AlterarSenha />} />
     </Routes>

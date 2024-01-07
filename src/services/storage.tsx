@@ -1,9 +1,14 @@
+import { IUserData } from "../Interfaces/IUserData"
+
 interface IDioBank {
-    login: boolean
+    login: boolean,
+    user?: IUserData
+
 }
 
 const dioBank = {
-    login: false
+    login: false,
+    user: {}
 }
 
 export const createLocalStorage = (): void => {

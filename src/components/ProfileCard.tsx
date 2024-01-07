@@ -3,12 +3,17 @@ import { Botao } from "./Button"
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { AppContext } from "./AppContext"
+import { IUserData } from "../Interfaces/IUserData"
+
+interface IProfileCard {
+    data: IUserData
+}
 
 
-
-export const ProfileCard = () => {
+export const ProfileCard = ({data}:  IProfileCard) => {
     const navigate = useNavigate()
     const { user } = useContext(AppContext)
+    console.log(user)
 
     const handleConta = () => {
         navigate(`/conta/${user.userId}`)
@@ -48,7 +53,7 @@ export const ProfileCard = () => {
                     <Td 
                     fontSize={'large'}
                     >
-                    {user.name}
+                    {data.name}
                     </Td>
                 </Tr>
                 <Tr>
@@ -61,7 +66,7 @@ export const ProfileCard = () => {
                     <Td 
                     fontSize={'large'}
                     >
-                    {user.email}
+                    {data.email}
                     </Td>
                 </Tr>
             </Table>

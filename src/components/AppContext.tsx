@@ -16,13 +16,7 @@ export const AppContext = createContext({} as IAppContext)
 
 export const AppContextProvider = ({ children }: any) => {
     const [isLoggedIn, setIsLoggedIn ] = useState<boolean>(false)
-    const [user, setUser] = useState<IUserData | any>({
-        userId: '',
-        name: '',
-        email: '',
-        password: '',
-        balance: 0
-    })
+    const [user, setUser] = useState<IUserData | any>({})
     const [email, setEmailTitle] = useState<string>('')
 
     const storage = getAllLocalStorage()

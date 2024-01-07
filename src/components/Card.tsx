@@ -5,6 +5,7 @@ import { login } from "../services/login";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "./AppContext";
 import { changeLocalStorage } from "../services/storage";
+import { userDefine } from "../services/user";
 
 interface IUserCard {
     title: string
@@ -22,13 +23,18 @@ export const Card = ({title}: IUserCard) => {
         return alert('Preencha o campo email')
       }
       const loggedIn = await login(email, password)
+      const data = await userDefine(email)
 
       if (!loggedIn ) {
         return alert( 'Email ou senha inválido')
       }
       
       setIsLoggedIn(true)
-      changeLocalStorage({login: true})
+      changeLocalStorage({
+        login: true,
+        user: data
+        
+      })
       navigate('/infoConta')
       setEmailTitle(email)
     }
