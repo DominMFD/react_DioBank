@@ -14,10 +14,13 @@ export const ChangeEmailCard = () => {
     const [email, setEmail] = useState<string>('')
     const [emailIsValid, setEmailIsValid] = useState<boolean>(true)
     const [emailExists, setEmailExists] = useState<boolean>(false)
+    const [isSuccessful, setIsSuccessful] = useState<boolean>(false)
+    const { setEmailTitle } = useContext(AppContext)
 
     const handleChangeEmail = async () => {
 
         const data = await userDefine(email)
+        
 
         if(email.includes('@')) {
             console.log(email)
@@ -29,7 +32,7 @@ export const ChangeEmailCard = () => {
             })
             .then( response => {
                 console.log(response)
-                setIsLoggedIn(false)
+                setEmailTitle(email)
             })
             .catch((error) => {
                 setEmailExists(true)
@@ -38,7 +41,9 @@ export const ChangeEmailCard = () => {
         } else {
             setEmailIsValid(false)
         }
+
         
+    
     }
 
     return (
