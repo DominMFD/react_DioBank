@@ -13,7 +13,6 @@ interface IProfileCard {
 export const ProfileCard = ({data}:  IProfileCard) => {
     const navigate = useNavigate()
     const { user } = useContext(AppContext)
-    console.log(user)
 
     const handleConta = () => {
         navigate(`/conta/${user.userId}`)
@@ -21,6 +20,10 @@ export const ProfileCard = ({data}:  IProfileCard) => {
 
     const handleChangeEmail = () => {
         navigate('/alterarEmail')
+    }
+
+    const handleChangePassword = () => {
+        navigate('/alterarSenha')
     }
 
 
@@ -78,7 +81,7 @@ export const ProfileCard = ({data}:  IProfileCard) => {
                 event={handleChangeEmail}/>
                 <Botao 
                 title="Alterar Senha"
-                event={() =>{}}/>
+                event={handleChangePassword}/>
             </Flex>
             <Center>
                 <Botao 

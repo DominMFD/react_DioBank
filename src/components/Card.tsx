@@ -5,7 +5,7 @@ import { login } from "../services/login";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "./AppContext";
 import { changeLocalStorage } from "../services/storage";
-import { userDefine } from "../services/user";
+import { userDefine } from "../services/userDefine";
 
 interface IUserCard {
     title: string

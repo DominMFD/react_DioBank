@@ -3,13 +3,11 @@ import { Botao } from "./Button"
 import { useContext, useState } from "react"
 import { instance } from "../services/api"
 import { AppContext } from "./AppContext"
-import { userDefine } from "../services/user"
-import { useNavigate } from "react-router-dom"
+import { ChangeInfoSuccessful } from "./ChangeInfolSuccessful"
 
 export const ChangeEmailCard = () => {
 
-    const navigate= useNavigate()
-    const  { user, setIsLoggedIn } = useContext(AppContext)
+    const  { user } = useContext(AppContext)
 
     const [email, setEmail] = useState<string>('')
     const [emailIsValid, setEmailIsValid] = useState<boolean>(true)
@@ -17,9 +15,7 @@ export const ChangeEmailCard = () => {
     const [isSuccessful, setIsSuccessful] = useState<boolean>(false)
     const { setEmailTitle } = useContext(AppContext)
 
-    const handleChangeEmail = async () => {
-
-        const data = await userDefine(email)
+    const handleChangeEmail = () => {
         
 
         if(email.includes('@')) {
@@ -31,8 +27,8 @@ export const ChangeEmailCard = () => {
                 balance: 0
             })
             .then( response => {
-                console.log(response)
                 setEmailTitle(email)
+                setIsSuccessful(true)
             })
             .catch((error) => {
                 setEmailExists(true)
@@ -44,6 +40,12 @@ export const ChangeEmailCard = () => {
 
         
     
+    }
+
+    if(isSuccessful) {
+        return (
+            <ChangeInfoSuccessful title="Seu Email" />
+        )
     }
 
     return (
