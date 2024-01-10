@@ -2,6 +2,8 @@ import { Box, Center, Input, Text } from "@chakra-ui/react"
 import { Botao } from "./Button"
 import { useContext, useState } from "react"
 import { AppContext } from "./AppContext"
+import { instance } from "../services/api"
+import { ChangeInfoSuccessful } from "./ChangeInfolSuccessful"
 
 export const ChangePasswordCard = () => {
 
@@ -20,7 +22,7 @@ export const ChangePasswordCard = () => {
             setVerifyCurrentPassword(false)
         }
 
-        if(newPassword !== currentPassword) {
+        if(newPassword !== confirmPassword) {
             setVerifyPassword(false)
         }
 
@@ -29,8 +31,25 @@ export const ChangePasswordCard = () => {
         }
 
         if(verifyCurrentPassword && verifyPassword && !verifyEqualsPassword && newPassword !== '') {
-            
+            instance.put(`/user/${user.userId}`, {
+                name: user.name,
+                email: user.email,
+                password: newPassword,
+                balance: 0
+            })
+            .then( response => {
+                setIsSuccessful(true)
+            })
+            .catch((error) => {
+   
+            })
         }
+    }
+
+    if(isSuccessful){
+        return (
+            <ChangeInfoSuccessful title="senha"/>
+        )
     }
 
 
@@ -63,7 +82,7 @@ export const ChangePasswordCard = () => {
             <Input
             placeholder="Digite sua senha atual"
             onChange={(event) => setCurrentPassword(event.target.value)}
-            />
+            value={currentPassword}/>
             {verifyCurrentPassword ? (
                 <></>
             ) : (
@@ -76,13 +95,13 @@ export const ChangePasswordCard = () => {
             placeholder="Digite a nova senha"
             marginTop={8}
             onChange={(event) => setNewPassword(event.target.value)}
-            />
+            value={newPassword}/>
             <Input
             placeholder="Confirme a nova senha"
             marginTop={3}
             marginBottom={8}
             onChange={(event) => setConfirmPassword(event.target.value)}
-            />
+            value={confirmPassword}/>
             { verifyPassword ? (
                 <>
                 </>

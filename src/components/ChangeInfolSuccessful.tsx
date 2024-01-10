@@ -33,7 +33,7 @@ export const ChangeInfoSuccessful = ({ title }: IChangeInfoSuccessful) => {
                 fontSize="medium"
                 fontWeight="600"
                 alignSelf='center'>
-                <Text>{title} foi alterado com sucesso!!!</Text>
+                <Text>{title === 'senha' ? 'Sua senha foi alterada com sucesso' : 'Seu email foi alterado com sucesso'}</Text>
                 </Center>
             </Flex>
             

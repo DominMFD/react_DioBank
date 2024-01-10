@@ -96,7 +96,6 @@ export const ChangeEmailCard = () => {
                 title="Alterar email"
                 event={handleChangeEmail}/>
             </Box>
-            
         </Box>
     )
 }

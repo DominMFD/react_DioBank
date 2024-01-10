@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { Center, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Box, Center, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { CardInfo } from "../components/CardInfo";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../components/AppContext";
+import { Botao } from "../components/Button";
 
 export const Conta = () => {
   const { user } = useContext(AppContext);
@@ -17,6 +18,11 @@ export const Conta = () => {
 
   return (
     <Center>
+    <Box
+    padding="15px"
+    width="80%"
+    maxW="2xl">
+      <Center>
         <SimpleGrid columns={2} spacing={8} paddingTop={16}>
           {user.name === undefined || user.name === null ? (
             <Center>
@@ -30,7 +36,18 @@ export const Conta = () => {
           )  
           }
         </SimpleGrid>
-    
+      </Center>
+      <Center>
+        <SimpleGrid columns={2} spacing={32} paddingTop={8}>
+              <Botao 
+              title="Depositar Dinheiro" 
+              event={()=>{}}/>
+              <Botao 
+              title="Sacar Dinheiro"
+              event={()=>{}}/>
+        </SimpleGrid>
+      </Center>
+    </Box>
     </Center>
   );
 };

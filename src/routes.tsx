@@ -7,6 +7,8 @@ import { Perfil } from "./Pages/Perfil";
 import { CriarConta } from "./Pages/CriarConta";
 import { AlterarEmail } from "./Pages/AlterarEmail";
 import { AlterarSenha } from "./Pages/AlterarSenha";
+import { DepositPage } from "./Pages/DepositPage";
+import { WithdrawPage } from "./Pages/WithdrawPage";
 
 const MainRoutes = () => {
   const { isLoggedIn, user } = useContext(AppContext);
@@ -19,6 +21,8 @@ const MainRoutes = () => {
       <Route path="/criarConta" element={!isLoggedIn ? <CriarConta /> : < Perfil data={user} />} />
       <Route path="/alterarEmail" element={<AlterarEmail /> }/>
       <Route path="/alterarSenha" element={<AlterarSenha />} />
+      <Route path="/depositar" element={<DepositPage />} />
+      <Route path="/sacar" element={<WithdrawPage />} />
     </Routes>
   );
 };
