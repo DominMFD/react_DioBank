@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Box, Center, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Box, Center, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { CardInfo } from "../components/CardInfo";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../components/AppContext";
@@ -15,6 +15,14 @@ export const Conta = () => {
   }
 
 
+  const handleDeposit = () => {
+    navigate('/depositar')
+  }
+
+  
+  const handleWithdraw = () => {
+    navigate('/sacar')
+  }
 
   return (
     <Center>
@@ -41,10 +49,10 @@ export const Conta = () => {
         <SimpleGrid columns={2} spacing={32} paddingTop={8}>
               <Botao 
               title="Depositar Dinheiro" 
-              event={()=>{}}/>
+              event={handleDeposit}/>
               <Botao 
               title="Sacar Dinheiro"
-              event={()=>{}}/>
+              event={handleWithdraw}/>
         </SimpleGrid>
       </Center>
     </Box>

@@ -17,7 +17,7 @@ export const ChangePasswordCard = () => {
     const [verifyEqualsPassword, setVerifyEqualsPassword] = useState<boolean>(false)
     const [isSuccessful, setIsSuccessful] = useState<boolean>()
 
-    const handleChangePassword = () => {
+    const handleChangePassword = async () => {
         if(currentPassword !== user.password) {
             setVerifyCurrentPassword(false)
         }
@@ -31,7 +31,7 @@ export const ChangePasswordCard = () => {
         }
 
         if(verifyCurrentPassword && verifyPassword && !verifyEqualsPassword && newPassword !== '') {
-            instance.put(`/user/${user.userId}`, {
+            await instance.put(`/user/${user.userId}`, {
                 name: user.name,
                 email: user.email,
                 password: newPassword,

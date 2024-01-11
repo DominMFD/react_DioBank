@@ -15,12 +15,11 @@ export const ChangeEmailCard = () => {
     const [isSuccessful, setIsSuccessful] = useState<boolean>(false)
     const { setEmailTitle } = useContext(AppContext)
 
-    const handleChangeEmail = () => {
+    const handleChangeEmail = async () => {
         
 
         if(email.includes('@')) {
-            console.log(email)
-                instance.put(`/user/${user.userId}`, {
+               await instance.put(`/user/${user.userId}`, {
                 name: user.name,
                 email: email,
                 password: user.password,
