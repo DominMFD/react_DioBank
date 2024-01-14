@@ -64,7 +64,7 @@ export const Card = ({title}: IUserCard) => {
         <Input 
         placeholder="password" 
         value={password}
-        onChange={(event) => setPassword(event.target.value)} />
+        onChange={(event) => setPassword(event.target.value)}/>
         <Flex gap='2'>
           <Botao title="Login" event={() => validateUser(email, password)} />
           <Botao title="Criar Conta" event={() => handleCreateAccount()} />

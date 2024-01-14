@@ -1,5 +1,4 @@
 import { IUserData } from "../Interfaces/IUserData"
-import { instance } from "./api"
 import { userDefine } from "./userDefine"
 
 
