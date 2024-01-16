@@ -1,9 +1,11 @@
-import { Box, Center, Input, Text } from "@chakra-ui/react"
+import { Box, Center, Input, Text, Icon } from "@chakra-ui/react"
 import { Botao } from "./Button"
 import { useContext, useState } from "react"
 import { instance } from "../services/api"
 import { AppContext } from "./AppContext"
+import { ArrowBackIcon } from '@chakra-ui/icons'
 import { ChangeInfoSuccessful } from "./ChangeInfolSuccessful"
+import { useNavigate } from "react-router-dom"
 
 export const ChangeEmailCard = () => {
 
@@ -14,6 +16,12 @@ export const ChangeEmailCard = () => {
     const [emailExists, setEmailExists] = useState<boolean>(false)
     const [isSuccessful, setIsSuccessful] = useState<boolean>(false)
     const { setEmailTitle } = useContext(AppContext)
+
+    const navigate = useNavigate();
+
+    const handleMainPage = () => {
+        navigate('/')
+    }
 
     const handleChangeEmail = async () => {
         
@@ -57,6 +65,13 @@ export const ChangeEmailCard = () => {
         width={'80%'}
         maxW='xl'
         >
+            <Icon as={ArrowBackIcon} 
+                color='#FFF'
+                boxSize={7}
+                onClick={handleMainPage}
+                cursor={'pointer'}
+                position='absolute'
+                marginTop={'3'}/>     
             <Center>
                 <Text
                 fontSize={'xx-large'} 

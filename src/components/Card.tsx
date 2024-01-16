@@ -44,10 +44,12 @@ export const Card = ({title}: IUserCard) => {
     }
 
     return (
-        <Box backgroundColor="#FFF" 
+        <Box backgroundColor="gray.700" 
+        color={'#FFF'}
         borderRadius="25px" 
         padding="15px" 
-        maxW='max-content'>
+        width='90%'
+        maxW='xl'>
         <Center
         marginBottom='5'
         fontSize='2xl'
@@ -55,7 +57,6 @@ export const Card = ({title}: IUserCard) => {
           <h1>{title}</h1>
         </Center>
         <Input 
-        maxWidth='7xl'
         placeholder="email"
         marginBottom='2'
         value={email}
@@ -65,7 +66,8 @@ export const Card = ({title}: IUserCard) => {
         placeholder="password" 
         value={password}
         onChange={(event) => setPassword(event.target.value)}/>
-        <Flex gap='2'>
+        <Flex gap='2'
+        marginTop='8'>
           <Botao title="Login" event={() => validateUser(email, password)} />
           <Botao title="Criar Conta" event={() => handleCreateAccount()} />
         </Flex>

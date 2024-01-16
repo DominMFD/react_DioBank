@@ -23,7 +23,10 @@ export const AppContextProvider = ({ children }: any) => {
 
     useEffect(() => {
         if(storage) {
-            const { login } = JSON.parse(storage)
+            const { login, user } = JSON.parse(storage)
+            if(user !== undefined) {
+                setEmailTitle(user.email)
+            }
             setIsLoggedIn(login)
         }
     }, [storage])

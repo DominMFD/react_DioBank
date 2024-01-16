@@ -1,8 +1,10 @@
-import { Box, Center, FormControl, FormHelperText, FormLabel, Input, Text } from "@chakra-ui/react"
+import { Box, Center, FormControl, FormHelperText, FormLabel, Icon, Input, Text } from "@chakra-ui/react"
 import { Botao } from "./Button"
 import { useState } from "react";
 import { instance } from "../services/api";
 import { SuccessfulCreateAccountCard } from "./SuccessfulCreateAccountCard";
+import { ArrowBackIcon } from '@chakra-ui/icons'
+import { useNavigate } from "react-router-dom";
 
 export const CreateAccountCard = () => {
 
@@ -17,6 +19,12 @@ export const CreateAccountCard = () => {
 
     const [createSuccessful, setCreateSuccessfull] = useState<boolean>()
     const [userExists, setUserExists] = useState<boolean>()
+
+    const navigate = useNavigate();
+
+    const handleMainPage = () => {
+        navigate('/')
+    }
 
     const verifyUser = async (): Promise<boolean> => {
         const data = await instance.get(`/user/${email}`)
@@ -71,11 +79,19 @@ export const CreateAccountCard = () => {
 
 
     return(
-        <Box backgroundColor="#FFF"
+        <Box backgroundColor="gray.700"
+        color='#FFF'
         borderRadius="25px"
         padding="15px"
         width="80%"
-        maxW="2xl">         
+        maxW="2xl">
+            <Icon as={ArrowBackIcon} 
+                color='#FFF'
+                boxSize={6}
+                onClick={handleMainPage}
+                cursor={'pointer'}
+                position='absolute'
+                marginTop={'2'}/>     
             <Center
             marginBottom='5'
             fontSize='2xl'

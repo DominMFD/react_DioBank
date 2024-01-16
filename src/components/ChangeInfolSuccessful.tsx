@@ -16,7 +16,7 @@ export const ChangeInfoSuccessful = ({ title }: IChangeInfoSuccessful) => {
     }
 
     return (
-        <Box backgroundColor='#FFF'
+        <Box backgroundColor='gray.700'
         borderRadius="25px"
         padding="15px"
         width="80%"

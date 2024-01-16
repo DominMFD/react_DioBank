@@ -46,7 +46,13 @@ export const Conta = () => {
         </SimpleGrid>
       </Center>
       <Center>
-        <SimpleGrid columns={2} spacing={32} paddingTop={8}>
+        <SimpleGrid columns={2} 
+        spacing={10} 
+        backgroundColor={'gray.700'} 
+        marginTop={'8'} padding={'17'} 
+        borderRadius={8} 
+        width={'70%'} 
+        color='white'>
               <Botao 
               title="Depositar Dinheiro" 
               event={handleDeposit}/>

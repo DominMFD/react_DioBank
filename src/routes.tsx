@@ -9,6 +9,7 @@ import { AlterarEmail } from "./Pages/AlterarEmail";
 import { AlterarSenha } from "./Pages/AlterarSenha";
 import { DepositPage } from "./Pages/DepositPage";
 import { WithdrawPage } from "./Pages/WithdrawPage";
+import { Header } from "./components/Header";
 
 const MainRoutes = () => {
   const { isLoggedIn, user } = useContext(AppContext);

@@ -8,8 +8,7 @@ export const Layout = ({ children }: any) => {
 
   return(
     <ChakraProvider>
-        <Header />
-        <Box minHeight="100vh" backgroundColor="#9413dc" padding="25px">
+        <Box height="93.3vh" backgroundColor="#74c69d" padding="25px">
           { children }
         </Box>
       </ChakraProvider>

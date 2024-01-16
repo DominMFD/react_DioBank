@@ -1,4 +1,4 @@
-import { Button, ChakraProvider } from "@chakra-ui/react";
+import { Button, ChakraProvider, background } from "@chakra-ui/react";
 
 interface IButton {
   title: string,
@@ -11,10 +11,12 @@ export const Botao = ({ title, event }: IButton) => {
     <ChakraProvider>
     <Button
       onClick={event}
-      colorScheme="teal"
+      backgroundColor={'#52b788'}
+      _hover={{backgroundColor: '#2d6a4f'}}
       size="sm"
       width="100%"
       marginTop="5px"
+      title={title}
     >
       {title}
     </Button>

@@ -1,8 +1,8 @@
-import { IUserData } from "../Interfaces/IUserData"
+
 
 interface IDioBank {
     login: boolean,
-    user?: IUserData
+    user?: { }
 
 }
 

@@ -1,9 +1,11 @@
-import { Box, Center, Input, Text } from "@chakra-ui/react"
+import { Box, Center, Input, Text, Icon } from "@chakra-ui/react"
 import { Botao } from "./Button"
 import { useContext, useState } from "react"
 import { AppContext } from "./AppContext"
 import { instance } from "../services/api"
+import { ArrowBackIcon } from '@chakra-ui/icons'
 import { ChangeBalanceSuccessful } from "./ChangeBalanceSuccessful"
+import { useNavigate } from "react-router-dom"
 
 export const WithdrawCard = () => {
 
@@ -13,6 +15,12 @@ export const WithdrawCard = () => {
     const [valueInput, setValueInput] = useState<string>();
     const [invalidNumber, setInvalidNumber] = useState<boolean>();
     const [isSuccessful, setIsSuccessful] = useState<boolean>(false);
+
+    const navigate = useNavigate();
+
+    const handleMainPage = () => {
+        navigate(`/conta/${user.userId}`)
+    }
 
     const withdrawMoney = async () => {
         console.log(money)
@@ -59,6 +67,13 @@ export const WithdrawCard = () => {
         width={'80%'}
         maxW='xl'
         >
+            <Icon as={ArrowBackIcon} 
+                color='#FFF'
+                boxSize={7}
+                onClick={handleMainPage}
+                cursor={'pointer'}
+                position='absolute'
+                marginTop={'3'}/>
             <Center>
                 <Text
                 fontSize={'xx-large'} 
