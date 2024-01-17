@@ -11,8 +11,8 @@ export const Botao = ({ title, event }: IButton) => {
     <ChakraProvider>
     <Button
       onClick={event}
-      backgroundColor={'#52b788'}
-      _hover={{backgroundColor: '#2d6a4f'}}
+      backgroundColor={'#2d6a4f'}
+      _hover={{backgroundColor: '#1b4332'}}
       size="sm"
       width="100%"
       marginTop="5px"

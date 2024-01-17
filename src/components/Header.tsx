@@ -1,4 +1,4 @@
-import { Box, Button, Center, ChakraProvider, Flex } from '@chakra-ui/react'
+import { Box, Button, Center, ChakraProvider, } from '@chakra-ui/react'
 import { AppContext } from './AppContext'
 import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -25,11 +25,10 @@ export const Header  = () => {
         color='#52b788' 
         fontWeight='bold' 
         fontSize='xx-large' 
-        flex={1} 
-        _hover={{color: '#2d6a4f'}}>
+        flex={1} >
           <Link 
           to={'/'} 
-          title='Página Inicial'>Domin<span style={{color: 'white'}}>Bank</span>
+          title='Página Inicial' >Domin<span style={{color: 'white'}}>Bank</span>
           </Link>
       </Center>
       {

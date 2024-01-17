@@ -9,7 +9,8 @@ export const SuccessfulCreateAccountCard = ({name}: ISuccessfulCreateAccountCard
 
 
     return (
-        <Box backgroundColor='#FFF'
+        <Box backgroundColor='gray.700'
+        color='#FFF'
         borderRadius="25px"
         padding="15px"
         width="80%"

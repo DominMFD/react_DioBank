@@ -20,12 +20,12 @@ export const ChangeBalanceSuccessful = ({ title }: IChangeBalanceSuccessful) => 
         borderRadius="25px"
         padding="15px"
         width="80%"
+        color={'#FFF'}
         maxW="2xl">
             <Flex
             alignItems='center'
             gap='10'>
                 <Icon as={ArrowBackIcon} 
-                color='#000'
                 boxSize={6}
                 onClick={handleMainPage}
                 cursor='pointer'/>

@@ -20,12 +20,12 @@ export const ChangeInfoSuccessful = ({ title }: IChangeInfoSuccessful) => {
         borderRadius="25px"
         padding="15px"
         width="80%"
-        maxW="2xl">
+        maxW="2xl"
+        color={'#FFF'}>
             <Flex
             alignItems='center'
             gap='10'>
                 <Icon as={ArrowBackIcon} 
-                color='#000'
                 boxSize={6}
                 onClick={handleMainPage}
                 cursor='pointer'/>
