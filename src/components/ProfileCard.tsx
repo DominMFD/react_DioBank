@@ -26,6 +26,10 @@ export const ProfileCard = ({data}:  IProfileCard) => {
         navigate('/alterarSenha')
     }
 
+    const handleDeleteAccount = () => {
+        navigate('/deletarConta')
+    }
+
 
 
     return (
@@ -82,6 +86,9 @@ export const ProfileCard = ({data}:  IProfileCard) => {
                 <Botao 
                 title="Alterar Senha"
                 event={handleChangePassword}/>
+                <Botao 
+                title="Deletar Conta"
+                event={handleDeleteAccount}/>
             </Flex>
             <Center>
                 <Botao 

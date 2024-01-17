@@ -26,23 +26,24 @@ export const CreateAccountCard = () => {
         navigate('/')
     }
 
-    const verifyUser = async (): Promise<boolean> => {
+    const verifyUser = async (emailUser: string): Promise<boolean> => {
         const data = await instance.get(`/user/${email}`)
             .then(response => {
                 return response.data
             })
 
-            if(data.email === email){
+            if(data.email === emailUser){
                 setUserExists(true)
-                console.log('oi')
-                return true
+                return false
             }
            
+            console.log('ola')
 
-            return false
+            return true
     } 
 
     const handleSubmit = async () => {
+        console.log('oi')
 
         if(name === '' || email === '' || password === '' || !email.includes('@')) {
             name === '' ? setNameError(true) : setNameError(false)
@@ -50,8 +51,8 @@ export const CreateAccountCard = () => {
             password === '' ? setPasswordError(true) : setPasswordError(false)
             !email.includes('@') ? setEmailIsValid(true) : setEmailIsValid(false)   
         } else {
-                if(await !verifyUser()) {
-                instance.post('/user', {
+                if(await verifyUser(email)) {
+                await instance.post('/user', {
                 name: name,
                 email: email,
                 password: password
@@ -64,6 +65,7 @@ export const CreateAccountCard = () => {
                 })
                 .catch((error) => {
                 console.log(error)
+                setUserExists(true)
                 console.log("Post falhou")
                 })
             }
@@ -152,7 +154,7 @@ export const CreateAccountCard = () => {
                 <FormLabel
                 marginTop="2">Senha</FormLabel>
                 <Input 
-                type="email"
+                type="password"
                 placeholder="Digite sua senha"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}/>
@@ -168,7 +170,7 @@ export const CreateAccountCard = () => {
             <Center marginTop="5">
                 <Botao
                 title="Criar conta" 
-                event={() => handleSubmit()}/>
+                event={async () => await handleSubmit()}/>
             </Center>
         </Box>
     )

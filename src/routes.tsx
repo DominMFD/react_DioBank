@@ -9,7 +9,7 @@ import { AlterarEmail } from "./Pages/ChangeEmailPage";
 import { AlterarSenha } from "./Pages/ChangePasswordPage";
 import { DepositPage } from "./Pages/DepositPage";
 import { WithdrawPage } from "./Pages/WithdrawPage";
-import { Header } from "./components/Header";
+import { DeletarConta } from "./Pages/DeleteAccountPage";
 
 const MainRoutes = () => {
   const { isLoggedIn, user } = useContext(AppContext);
@@ -24,6 +24,7 @@ const MainRoutes = () => {
       <Route path="/alterarSenha" element={<AlterarSenha />} />
       <Route path="/depositar" element={<DepositPage />} />
       <Route path="/sacar" element={<WithdrawPage />} />
+      <Route path="/deletarConta" element={<DeletarConta />} />
     </Routes>
   );
 };
