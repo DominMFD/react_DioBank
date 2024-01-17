@@ -1,6 +1,6 @@
 import { ArrowBackIcon } from "@chakra-ui/icons"
 import { Box, Center, Icon, Input, Text } from "@chakra-ui/react"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppContext } from "../components/AppContext"
 import { Botao } from "../components/Button"
@@ -9,6 +9,9 @@ import { Botao } from "../components/Button"
 export const DeleteAccountCard = () => {
 
     const { user } = useContext(AppContext)
+
+    const [password, setPassword] = useState<string>('')
+    const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false)
   
     const navigate = useNavigate();
 
@@ -45,8 +48,8 @@ export const DeleteAccountCard = () => {
             <Input
             placeholder="Digite sua senha"
             type='password'
-            onChange={() => {}}
-            value={''}
+            onChange={(event) => setPassword(event.target.value)}
+            value={password}
             />
             <Box
             marginTop={8}>
