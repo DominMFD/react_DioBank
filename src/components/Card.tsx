@@ -63,7 +63,8 @@ export const Card = ({title}: IUserCard) => {
         onChange={(event) => setEmail(event.target.value)}
         />
         <Input 
-        placeholder="password" 
+        placeholder="password"
+        type="password"
         value={password}
         onChange={(event) => setPassword(event.target.value)}/>
         <Flex gap='2'

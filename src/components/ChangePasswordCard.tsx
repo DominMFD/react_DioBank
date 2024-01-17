@@ -96,6 +96,7 @@ export const ChangePasswordCard = () => {
             )}
             <Input
             placeholder="Digite sua senha atual"
+            type="password"
             onChange={(event) => setCurrentPassword(event.target.value)}
             value={currentPassword}/>
             {verifyCurrentPassword ? (
@@ -108,11 +109,13 @@ export const ChangePasswordCard = () => {
             )}
             <Input
             placeholder="Digite a nova senha"
+            type="password"
             marginTop={8}
             onChange={(event) => setNewPassword(event.target.value)}
             value={newPassword}/>
             <Input
             placeholder="Confirme a nova senha"
+            type="password"
             marginTop={3}
             marginBottom={8}
             onChange={(event) => setConfirmPassword(event.target.value)}

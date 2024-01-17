@@ -7,7 +7,7 @@ export const userDefine = async (email: string): Promise<IUserData> => {
     return response.data
   })
   .catch((error) => {
-    console.log('login falhou')
+    alert('Login falhou')
   })
 
   return data

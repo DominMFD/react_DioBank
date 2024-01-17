@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { AppContext } from "./components/AppContext";
 import { Routes, Route } from "react-router-dom";
-import { Conta } from "./Pages/Conta";
-import { Home } from "./Pages/Home";
-import { Perfil } from "./Pages/Perfil";
-import { CriarConta } from "./Pages/CriarConta";
-import { AlterarEmail } from "./Pages/AlterarEmail";
-import { AlterarSenha } from "./Pages/AlterarSenha";
+import { Conta } from "./Pages/AccountPage";
+import { Home } from "./Pages/HomePage";
+import { Perfil } from "./Pages/ProfilePage";
+import { CriarConta } from "./Pages/CreateAccountPage";
+import { AlterarEmail } from "./Pages/ChangeEmailPage";
+import { AlterarSenha } from "./Pages/ChangePasswordPage";
 import { DepositPage } from "./Pages/DepositPage";
 import { WithdrawPage } from "./Pages/WithdrawPage";
 import { Header } from "./components/Header";
