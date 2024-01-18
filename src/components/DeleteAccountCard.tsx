@@ -4,14 +4,20 @@ import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppContext } from "../components/AppContext"
 import { Botao } from "../components/Button"
+import { ConfirmDeleteAccount } from "./ConfirmDeleteAccount"
+import { instance } from "../services/api"
+import { DeleteAccountSuccessful } from "./DeleteAccountSuccessful"
+import { changeLocalStorage } from "../services/storage"
 
 
 export const DeleteAccountCard = () => {
 
-    const { user } = useContext(AppContext)
+    const { user, setIsLoggedIn } = useContext(AppContext)
 
     const [password, setPassword] = useState<string>('')
     const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<boolean>(false)
+    const [deleteAccount, setDeleteAccount] = useState<boolean>(false)
   
     const navigate = useNavigate();
 
@@ -19,6 +25,39 @@ export const DeleteAccountCard = () => {
         navigate(`/`)
     }
 
+    const handleDelete = () => {
+        if(password === user.password) {
+            setPasswordIsValid(true)
+        }
+
+        if(password !== user.password) {
+            setErrorMessage(true)
+        }
+    }
+
+    const handleCancelDelete = () => {
+        setPassword('')
+        setPasswordIsValid(false)
+    }
+
+    const ConfirmDelete = () => {
+        instance.delete(`/user/${user.userId}`)
+        .then((response) => {
+            setDeleteAccount(true)
+            changeLocalStorage({login: false, user: {}})
+            setIsLoggedIn(false)
+        })
+        .catch (error => {
+            setErrorMessage(true)
+        })
+
+    }
+
+    if(deleteAccount) {
+        return (
+           <DeleteAccountSuccessful/>
+        )
+    }
 
     return (
         <Box
@@ -36,7 +75,7 @@ export const DeleteAccountCard = () => {
                 onClick={handleMainPage}
                 cursor={'pointer'}
                 position='absolute'
-                marginTop={'3'}/> 
+                marginTop={'3'}/>
             <Center>
                 <Text
                 fontSize={'xx-large'} 
@@ -45,18 +84,29 @@ export const DeleteAccountCard = () => {
                     Deletar Conta
                 </Text> 
             </Center>
-            <Input
-            placeholder="Digite sua senha"
-            type='password'
-            onChange={(event) => setPassword(event.target.value)}
-            value={password}
-            />
-            <Box
-            marginTop={8}>
+            {passwordIsValid ?
+                <ConfirmDeleteAccount 
+                eventButton1={ConfirmDelete}
+                eventButton2={handleCancelDelete}/> :
+                <>
+                <Input
+                placeholder="Digite sua senha"
+                type='password'
+                onChange={(event) => setPassword(event.target.value)}
+                value={password}
+                />
+                <Text color={'red.300'}
+                display={errorMessage ? 'initial' : 'none'}>
+                Senha incorreta
+                </Text>
+                <Box
+                marginTop={8}>
                 <Botao
                 title="Excluir a Conta"
-                event={() => {}}/>
-            </Box>
+                event={handleDelete}/>
+                </Box>
+                </>       
+            }  
         </Box>
     )
 } 
